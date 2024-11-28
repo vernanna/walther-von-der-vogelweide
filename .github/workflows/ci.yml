@@ -20,6 +20,17 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -warnaserror
+      run: dotnet build --no-restore -warnaserror -c Release
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish src/Vernanna.WaltherVonDerVogelweide/Vernanna.WaltherVonDerVogelweide.csproj --no-build --nologo -c Release -o artifact --no-self-contained
+    - name: Remove unnecessary Files
+      run: |
+        find artifact -name "*.pdb" -delete
+        find artifact -name "*.xml" -delete
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Artifact
+        path: ./artifact/
