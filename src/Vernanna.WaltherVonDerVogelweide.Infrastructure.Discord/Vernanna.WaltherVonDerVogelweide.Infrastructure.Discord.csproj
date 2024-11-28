@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+      <PackageReference Include="Discord.Net" Version="3.16.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Vernanna.WaltherVonDerVogelweide.Shared\Vernanna.WaltherVonDerVogelweide.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
