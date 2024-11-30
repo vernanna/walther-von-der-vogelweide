@@ -8,4 +8,13 @@
       <ProjectReference Include="..\Vernanna.WaltherVonDerVogelweide.Shared\Vernanna.WaltherVonDerVogelweide.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="libs\x64\opus.dll">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="libs\x86\opus.dll">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
