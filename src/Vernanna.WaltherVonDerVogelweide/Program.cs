@@ -11,6 +11,7 @@ builder.Services.Configure<DiscordOptions>(builder.Configuration.GetSection("Dis
 builder.Services.AddSingleton<IDiscordContract, DiscordContract>();
 
 LibraryLoader.LoadOpus();
+LibraryLoader.LoadFfmpeg();
 
 var host = builder.Build();
 await host.Services.GetRequiredService<IDiscordContract>().Initialize();

@@ -1,4 +1,6 @@
-﻿namespace Vernanna.WaltherVonDerVogelweide.Infrastructure.Discord.libs;
+﻿using FFMpegCore;
+
+namespace Vernanna.WaltherVonDerVogelweide.Infrastructure.Discord.libs;
 
 public class LibraryLoader
 {
@@ -21,4 +23,6 @@ public class LibraryLoader
 
         File.Copy(sourcePath, destinationPath);
     }
+
+    public static void LoadFfmpeg() => GlobalFFOptions.Configure(new FFOptions { BinaryFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "libs") });
 }

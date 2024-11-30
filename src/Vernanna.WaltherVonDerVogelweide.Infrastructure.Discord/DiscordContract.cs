@@ -18,6 +18,8 @@ public class DiscordContract(
     private readonly DiscordClient client = new(logger);
     private IAudioClient? audioClient;
 
+    public Stream? AudioStream { get; private set; }
+
     public async Task Initialize()
     {
         await AddModulesAsync(GetType().Assembly, serviceProvider);
@@ -52,12 +54,15 @@ public class DiscordContract(
             audioClient = null;
             return Task.CompletedTask;
         };
+
+        AudioStream = audioClient?.CreatePCMStream(AudioApplication.Music);
     }
 
     public async Task LeaveChannel()
     {
         if (audioClient != null)
         {
+            AudioStream?.Dispose();
             await audioClient.StopAsync();
             audioClient?.Dispose();
             audioClient = null;
